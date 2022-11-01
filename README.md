@@ -23,7 +23,7 @@ Example codes:
 ```
 <script>
    var sdk = new LockySDK();
-   var token = sdk.verify(email, codeFromEmail);
+   var token = await sdk.verify(email, codeFromEmail);
 </script>
 ```
 
@@ -33,7 +33,7 @@ The devices object contain all the nessesary data to run operations on the lock,
 ```
 <script>
    var sdk = new LockySDK();
-   var devices = sdk.getAllLocks(token);
+   var devices = await sdk.getAllLocks(token);
 </script>
 ```
 
@@ -41,6 +41,6 @@ The devices object contain all the nessesary data to run operations on the lock,
 ```
 <script>
    var sdk = new LockySDK();
-   var devices = sdk.pulseOpen(device.token, device.id, device.tenantId);
+   sdk.pulseOpen(device.token, device.id, device.tenantId);
 </script>
 ```
