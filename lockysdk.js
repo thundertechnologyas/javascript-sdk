@@ -12,6 +12,8 @@ class Device {
     id = "";
     name = "";
     lastReceivedDate = "";
+    token = "";
+    tenantId = "";
 }
 
 class LockySDK {
@@ -73,11 +75,31 @@ class LockySDK {
                     var device = new Device();
                     device.id = lock.id;
                     device.name = lock.name;
+                    device.token = mobilekey.token;
+                    device.tenantId = mobilekey.tenantId;
                     console.log(device);
                     result.push(device);
                 }
             }
         }catch(e) {
+        }
+        return result;
+    }
+    
+    /**
+     * Get a list of all decives this user has access to.
+     * @param String token token received from verify
+     * @returns A list of devices.
+     */
+    async getAllLocks(token) {
+        var mobilekeys = await this._getMobileKeys(token);
+        var result = [];
+        for(var k in mobilekeys) {
+            var mobilekey = mobilekeys[k];
+            var devices = await this.getLocks(mobilekey);
+            for(var k in devices) {
+                result.push(devices[k]);
+            }
         }
         return result;
     }

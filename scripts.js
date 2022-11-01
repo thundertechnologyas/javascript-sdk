@@ -21,30 +21,26 @@ const getAllLocks = async () => {
     alllocksdiv.innerHTML = "";
             
     var token = document.getElementById("tokentouse").value;
-    var mobilekeys = await sdk._getMobileKeys(token);
-    for(var k in mobilekeys) {
-        var mobilekey = mobilekeys[k];
-
-        var devices = await sdk.getLocks(mobilekey);
+    var devices = await sdk.getAllLocks(token);
         
-        for(var k in devices) {
-            var device = devices[k];
-            var deviceId = device.id;
-            var deviceName = device.name;
-            var token = mobilekey.token;
-            var tenantId = mobilekey.tenantId;
-            
-            var lockdiv = document.createElement('div');
-            lockdiv.classList.add("lockrow");
-            lockdiv.innerHTML = deviceName + "<button class='actionbutton' onclick='downloadPulseOpen(\""+token+"\",\""+deviceId+"\",\""+tenantId+"\")' >Pulse open</button>\n\
-                <button class='actionbutton' value='' onclick='downloadForcedOpen(\""+token+"\",\""+deviceId+"\",\""+tenantId+"\")' >Forced open</button>\n\
-                <button  class='actionbutton' type='button' onclick='downloadForcedClosed(\""+token+"\",\""+deviceId+"\",\""+tenantId+"\")' >Forced closed</button>\n\
-                <button class='actionbutton' type='button' onclick='downloadNormalState(\""+token+"\",\""+deviceId+"\",\""+tenantId+"\")' >Normal state</button>";
-            alllocksdiv.appendChild(lockdiv);
+    for(var k in devices) {
+        var device = devices[k];
+        console.log(device);
+        var deviceId = device.id;
+        var deviceName = device.name;
+        var token = device.token;
+        var tenantId = device.tenantId;
 
-        }
+        var lockdiv = document.createElement('div');
+        lockdiv.classList.add("lockrow");
+        lockdiv.innerHTML = deviceName + "<button class='actionbutton' onclick='downloadPulseOpen(\""+token+"\",\""+deviceId+"\",\""+tenantId+"\")' >Pulse open</button>\n\
+            <button class='actionbutton' value='' onclick='downloadForcedOpen(\""+token+"\",\""+deviceId+"\",\""+tenantId+"\")' >Forced open</button>\n\
+            <button  class='actionbutton' type='button' onclick='downloadForcedClosed(\""+token+"\",\""+deviceId+"\",\""+tenantId+"\")' >Forced closed</button>\n\
+            <button class='actionbutton' type='button' onclick='downloadNormalState(\""+token+"\",\""+deviceId+"\",\""+tenantId+"\")' >Normal state</button>";
+        alllocksdiv.appendChild(lockdiv);
 
     }
+
 }
 
 const getMobileKeys = async () => {
