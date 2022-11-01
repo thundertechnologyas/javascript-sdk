@@ -12,6 +12,8 @@ Example codes:
 
 1. How to log on to the sdk:
 
+```
 #<script>
 #var sdk = new LockySDK();
 #</script>
+```
