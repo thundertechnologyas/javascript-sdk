@@ -8,9 +8,7 @@ They will be using the same techniques used in this javascript sdk.
 
 If you are looking a way to build your own SDK for the Locky universe. Then this is libarary contains all the nessesary information you need.
 
-Example codes:
-
-### You log on to the sdk using a two token based authentication process, first ask for a verification code sent by email:
+### You log on to the sdk using a two token based authentication process, first ask for a verification code sent by email
 
 ```
 <script>
@@ -19,7 +17,7 @@ Example codes:
    sdk.startVerify(email);
 </script>
 ```
-### Then use the authentication code to obtain the token:
+### Then use the authentication code to obtain the token
 ```
 <script>
    var sdk = new LockySDK();
@@ -37,7 +35,7 @@ The devices object contain all the nessesary data to run operations on the lock,
 </script>
 ```
 
-### Run pulse open:
+### Run pulse open
 ```
 <script>
    var sdk = new LockySDK();
