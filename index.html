@@ -6,6 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
         <link rel="stylesheet" href="./styles.css">
+        <script src="./lockysdkhelper.js"></script>
         <script src="./lockysdk.js"></script>
         <script src="./scripts.js"></script>
    </head>
@@ -20,21 +21,23 @@
             After running step 1, you will recieve an email with a verification code, enter the code in the field below to logon.<br>
             <input type="txt" placeholder="Verification code" id="verifycode"> <button type="submit" onclick="verify()">Verify</button><br>
             <br>
-            Token (will be entered here after sucessful logon):<br>
-            <input type="txt" placeholder="Token after login" value="" id="tokentouse">
+            <h1>Is authenticated?</h1>
+            <input type="txt" placeholder="Token after login" value="" id="tokentouse" disabled>
 
-            <h1>Login complete, find tenants</h1>
-            <button type="button" type="submit" onclick="getMobileKeys()">Get mobile keys</button>
-            <br>
-            <br>
-            <div id="tenantsfound"></div>
-            <br>
-            <h1>Get all locks</h1>
+            <h1>Fetch all locks?</h1>
             <button type="button" type="submit" onclick="getAllLocks()">Get all locks</button>
             
             <br>
             <h1>Get all locks</h1>
             <div id="alllocks">Authenticate and push the "Get all locks" to list all locks you have access to.</div>
-       </div>
+
+            <h1>Logout?</h1>
+            <button type="button" type="submit" onclick="logout()">Logout</button>
+              </div>
     </body>
 </html>
+
+
+<script>
+document.getElementById("tokentouse").value = sdk.isAuthenticated();
+</script>
