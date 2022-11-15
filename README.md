@@ -8,6 +8,10 @@ They will be using the same techniques used in this javascript sdk.
 
 If you are looking a way to build your own SDK for the Locky universe. Then this is libarary contains all the nessesary information you need.
 
+More information about locky:
+https://www.locky.tech
+
+
 ### You log on to the sdk using a two token based authentication process, first ask for a verification code sent by email
 
 ```
